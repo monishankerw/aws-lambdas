@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Messages (AJAX)</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Chat Messages</h1>
+
+    <form id="createForm">
+        <input type="text" id="sender" placeholder="Sender (max 20)" required maxlength="20" />
+        <input type="text" id="text" placeholder="Message (max 500)" required maxlength="500" />
+        <button type="submit">Send</button>
+    </form>
+
+    <div class="toolbar">
+        <input type="text" id="filterSender" placeholder="Filter by sender" />
+        <button id="reloadBtn">Reload</button>
+    </div>
+
+    <table id="messagesTable">
+        <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Text</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="pager">
+        <button id="prevPage">Prev</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage">Next</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

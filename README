@@ -1,0 +1,171 @@
+
+---
+
+# AWS Lambda Interview Questions and Answers
+
+## **Basic Conceptual Questions**
+
+### **1. What is AWS Lambda?**
+
+AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers. You upload your code, and it runs automatically in response to triggers.
+
+### **2. How does AWS Lambda pricing work?**
+
+Lambda charges you based on:
+
+* **Number of requests** (1 million free per month)
+* **Execution time** (measured in milliseconds)
+
+### **3. Key Components of AWS Lambda**
+
+* **Function code** – Your logic
+* **Event source** – Trigger (like S3, API Gateway)
+* **Execution role** – IAM role for permissions
+* **Runtime** – Environment such as Python, Java, Node.js
+
+### **4. Supported Runtimes**
+
+* Node.js
+* Python
+* Java
+* Go
+* Ruby
+* .NET Core
+* Custom Docker runtimes
+
+### **5. Maximum Execution Time**
+
+* Default: 3 seconds
+* Maximum: **15 minutes**
+
+---
+
+## **Hands-On / Scenario-Based Questions**
+
+### **6. How to Deploy a Lambda Function**
+
+* Upload a ZIP via AWS Console
+* Use AWS CLI / SDK
+* Deploy with CI/CD pipeline (AWS CodePipeline)
+
+### **7. How to Handle Cold Starts**
+
+* Use **Provisioned Concurrency**
+* Reduce package size and dependencies
+
+### **8. Triggers for Lambda**
+
+* S3 Events
+* API Gateway
+* DynamoDB Streams
+* CloudWatch Events
+* SQS (message queue)
+
+### **9. Monitoring & Debugging**
+
+* **CloudWatch Logs**
+* **CloudWatch Metrics**
+* **AWS X-Ray** (trace analysis)
+
+### **10. Environment Variables**
+
+Used to store configuration and secrets securely with encryption using **KMS**.
+
+---
+
+## **Best Practices & Optimization**
+
+### **11. Best Practices**
+
+* Keep code small
+* Optimize memory
+* Reuse database connections
+* Avoid infinite loops
+
+### **12. Performance Optimization**
+
+* Increase memory for better CPU performance
+* Minimize cold start time
+* Use Provisioned Concurrency
+
+### **13. AWS Lambda Limitations**
+
+| Feature                | Limit            |
+| ---------------------- | ---------------- |
+| Max execution time     | 15 mins          |
+| Memory                 | 128 MB – 10 GB   |
+| Deployment size (zip)  | 50 MB            |
+| Deployment (Container) | 10 GB            |
+| Default concurrency    | 1,000 executions |
+
+### **14. Integration with DynamoDB**
+
+Enable **DynamoDB Streams** to automatically trigger a Lambda when data changes.
+
+---
+
+## **Security & Access**
+
+### **15. Securing Lambda Functions**
+
+* Use IAM roles
+* Store secrets in **AWS Secrets Manager**
+* Avoid hardcoded credentials
+
+### **16. Role of IAM**
+
+Gives permissions for Lambda to access other AWS services.
+
+### **17. API Gateway Authorization**
+
+Use **Lambda Authorizers** for token or header-based authentication.
+
+---
+
+## **Real-World Scenarios**
+
+### **18. Handling Retries**
+
+* AWS retries asynchronous events twice
+* Use **Dead Letter Queues (DLQ)** for failure handling
+
+### **19. If Execution Time Exceeds**
+
+* Optimize the logic
+* Break into smaller functions using **Step Functions**
+* Check latency issues
+
+### **20. Processing Large Files**
+
+* Upload file to **S3**
+* Trigger Lambda
+* Process in **chunks**
+* Use Step Functions for orchestration
+
+---
+
+## **Advanced Concepts**
+
+### **21. What is Lambda@Edge?**
+
+Lambda@Edge runs code at AWS edge locations to reduce latency and customize content delivery via CloudFront.
+
+### **22. Versioning**
+
+* Lambda supports multiple versions
+* Use **aliases** like `Prod` or `Dev` to point to specific versions
+
+### **23. Lambda Layers**
+
+Layers let you share dependencies across multiple Lambda functions.
+
+### **24. Concurrency Limit**
+
+* Default: 1,000 concurrent executions
+* Use **Reserved Concurrency** or request an increase if needed
+
+
+
+---
+
+
